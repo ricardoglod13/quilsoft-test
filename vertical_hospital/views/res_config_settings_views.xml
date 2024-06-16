@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="70"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Vertical Hospital" string="Hospital Vertical" data-key="vertical_hospital">
+                    <h2>Hospital Vertical</h2>
+                    <div class="row mt16 o_settings_container" name="matrix_setting_container">
+                        <div class="col-12 col-lg-6 o_setting_box" id="date_validate_documentation">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Pacientes
+                                </div>
+                                <label string="Enpoint de Paciantes" for="hospital_pacient_endpoint" class="o_light_label"/>
+                                <field name="hospital_pacient_endpoint"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="vertical_hospital_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Ajustes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'vertical_hospital', 'bin_size': False}</field>
+    </record>
+
+    
+</odoo>

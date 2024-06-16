@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hospital_pacient_paperformat" model="report.paperformat">
+            <field name="name">A4 para Reporte de Paciantes</field>
+            <field name="default" eval="False" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+        </record>
+
+        <template id="hosital_pacient_report" name="hospital_pacient_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="header" />
+                    <div class="page">
+                        <h1 class="w-100 text-center">Pacientes</h1>
+                        <table class="table">
+                            <thead>
+                                <th scope="column">Secuencia</th>
+                                <th scope="column">Nombre y Apellido</th>
+                                <th scope="column">DNI</th>
+                                <th scope="column">Estado</th>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="o">
+                                    <tr>
+                                        <td><t t-esc="o.sequence"/></td>
+                                        <td><t t-esc="o.name"/></td>
+                                        <td><t t-esc="o.dni"/></td>
+                                        <td><t t-esc="o._get_state()"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <record id="server_action_hospital_pacient_report" model="ir.actions.server">
+            <field name="name">Imprimir Reporte de Pacientes</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="vertical_hospital.model_hospital_pacient"/>
+            <field name="binding_model_id" ref="vertical_hospital.model_hospital_pacient"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.print_report()
+            </field>
+        </record>
+
+        <record id="action_hospital_pacient_report" model="ir.actions.report">
+            <field name="name">Reporte de Pacientes</field>
+            <field name="model">hospital.pacient</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">vertical_hospital.hosital_pacient_report</field>
+            <field name="report_file">vertical_hospital.hosital_pacient_report</field>
+            <field name="print_report_name">'Reporte de Pacientes'</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="vertical_hospital.hospital_pacient_paperformat"/>
+        </record>
+    </data>
+</odoo>

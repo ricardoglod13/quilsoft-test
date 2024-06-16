@@ -1,0 +1,22 @@
+{
+    "name": "Hospital Vertical",
+    "summary": "Aplicacion de Hospital Vertical",
+    "version": "1.0.0",
+    "category": "Hospital",
+    "author": "Ricardo Sanchez",
+    "maintainers": ["Ricardo Sanchez"],
+    "license": "AGPL-3",
+    "depends": ["mail"],
+    "data": [
+        'data/ir_sequence.xml',
+        'security/ir.model.access.csv',
+        'views/hospital_pacient_views.xml',
+        'views/hospital_treatment_views.xml',
+        'views/hospital_vertical_menu.xml',
+        'views/res_config_settings_views.xml',
+        'reports/hospital_pacient_report.xml',
+    ],
+    'application': True,
+    'installable': True,
+    'auto_install': False,
+}

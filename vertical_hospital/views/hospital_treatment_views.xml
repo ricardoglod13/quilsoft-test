@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hospital_treatment_view_tree" model="ir.ui.view">
+            <field name="name">hospital.treatment.view.tree</field>
+            <field name="model">hospital.treatment</field>
+            <field name="arch" type="xml">
+                <tree string="Tratamientos">
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="doctor" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="hospital_treatment_view_form" model="ir.ui.view">
+            <field name="name">hospital.treatment.view.form</field>
+            <field name="model">hospital.treatment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" required="1" />
+                                <field name="name" required="1" />
+                            </group>
+                            <group>
+                                <field name="doctor" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hospital_treatment_action" model="ir.actions.act_window">
+          <field name="name">Tratamientos</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">hospital.treatment</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="vertical_hospital.hospital_treatment_view_tree"/>
+          <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No se encontró ningun Tratamiento. ¡Creemos uno!
+              </p>
+          </field>
+        </record>
+    </data>
+</odoo>
