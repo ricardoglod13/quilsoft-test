@@ -17,7 +17,7 @@
                                 <div class="text-muted">
                                     Pacientes
                                 </div>
-                                <label string="Enpoint de Paciantes" for="hospital_pacient_endpoint" class="o_light_label"/>
+                                <label class="ml-1" string="Enpoint de Pacientes" for="hospital_pacient_endpoint" class="o_light_label"/>
                                 <field name="hospital_pacient_endpoint"/>
                             </div>
                         </div>
